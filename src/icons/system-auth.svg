@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0;}
+	.st1{fill:currentColor;}
+</style>
+<g>
+	<g class="st0">
+		<rect x="0" class="st1" width="1024" height="1024"/>
+	</g>
+	<g>
+		<path class="st1" d="M417,160.5v255H162v-255H417 M449,96.5H130c-17.7,0-32,14.3-32,32v319c0,17.7,14.3,32,32,32h319
+			c17.7,0,32-14.3,32-32v-319C481,110.9,466.7,96.5,449,96.5L449,96.5z"/>
+	</g>
+	<g>
+		<path class="st1" d="M863.6,160.5v255h-255v-255H863.6 M895.6,96.5h-319c-17.7,0-32,14.3-32,32v319c0,17.7,14.3,32,32,32h319
+			c17.7,0,32-14.3,32-32v-319C927.6,110.9,913.3,96.5,895.6,96.5L895.6,96.5z"/>
+	</g>
+	<g>
+		<path class="st1" d="M417,609.3v255H162v-255H417 M449,545.3H130c-17.7,0-32,14.3-32,32v319c0,17.7,14.3,32,32,32h319
+			c17.7,0,32-14.3,32-32v-319C481,559.6,466.7,545.3,449,545.3L449,545.3z"/>
+	</g>
+	<g>
+		<path class="st1" d="M863.6,609.3v255h-255v-255H863.6 M895.6,545.3h-319c-17.7,0-32,14.3-32,32v319c0,17.7,14.3,32,32,32h319
+			c17.7,0,32-14.3,32-32v-319C927.6,559.6,913.3,545.3,895.6,545.3L895.6,545.3z"/>
+	</g>
+</g>
+</svg>
