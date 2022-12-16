@@ -17,7 +17,7 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 
 ## 项目介绍
 
-   是基于 [vue3-element-admin]升级的 Vue3 版本有来商城管理前端工程；使用前端主流技术栈 Vue3 + Vite3 + TypeScript + Vue Router + Pinia + Volar + Element Plus 等；实现功能包括不限于动态权限路由、动态添加全局公共组件。
+   是基于 [vue-element-admin]升级的 Vue3 版本有来商城管理前端工程；使用前端主流技术栈 Vue3 + Vite3 + TypeScript + Vue Router + Pinia + Volar + Element Plus 等；实现功能包括不限于动态权限路由、动态添加全局公共组件。
 
 
 ## 技术栈
@@ -64,7 +64,4 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
   ```
   npm run build:prod
   ```
-
   生成的静态文件位于项目根目录 dist 文件夹下
-
-  ```
