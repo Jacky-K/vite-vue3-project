@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-container">
-    <!-- <el-button>Logo</el-button> -->
+    <!-- Logo -->
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"

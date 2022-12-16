@@ -1,5 +1,5 @@
 <template>
-  <div class="main-wrapper">
+  <div class="main-wrapper" :class="{ hideSidebar: !app.sidebar.opened }">
     <Sidebar />
     <div class="main-container">
       <navbar />
@@ -12,6 +12,10 @@
 import AppMain from './components/AppMain.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import Navbar from './components/Navbar.vue'
+
+import useStore from '@/store'
+
+const { app } = useStore()
 </script>
 
 <style lang="scss" scoped>

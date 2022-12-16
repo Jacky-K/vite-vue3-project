@@ -16,11 +16,13 @@
       </app-link>
     </template>
 
-    <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)">
+    <el-sub-menu v-else :index="resolvePath(item.path)">
       <template #title>
         <div class="menu-title">
-          <svg-icon v-if="item.code" :icon-class="item.code"></svg-icon>
-          <span>{{ item.name }}</span>
+          <div :class="{ 'hidesidebar-active': !app.sidebar.opened }">
+            <svg-icon v-if="item.code" :icon-class="item.code"></svg-icon>
+            <span>{{ item.name }}</span>
+          </div>
         </div>
       </template>
       <sidebar-item
@@ -40,6 +42,9 @@ import { ref } from 'vue'
 import path from 'path-browserify'
 import { isExternal } from '@/utils/validate'
 import AppLink from './Link.vue'
+import useStore from '@/store'
+
+const { app } = useStore()
 
 const props = defineProps({
   item: {

@@ -30,7 +30,6 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 | Element Plus | 基于 Vue 3，面向设计师和开发者的组件库 | https://element-plus.gitee.io/zh-CN/ |
 | Pinia        | 新一代状态管理工具                     | https://pinia.vuejs.org/             |
 | Vue Router   | Vue.js 的官方路由                      | https://router.vuejs.org/zh/         |
-                                             |
 
 ## 启动部署
 
