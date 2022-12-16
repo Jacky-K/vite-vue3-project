@@ -6,7 +6,7 @@ export default defineStore({
   id: 'app',
   state: (): AppState => ({
     sidebar: {
-      opened: localStorage.get('sidebarStatus') || true
+      opened: Boolean(localStorage.get('sidebarStatus'))
     }
   }),
   actions: {

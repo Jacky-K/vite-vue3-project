@@ -8,7 +8,7 @@ interface DefaultSettings {
 }
 
 const defaultSettings: DefaultSettings = {
-  title: 'Vite + Vue@3.0',
+  title: 'Vite + Vue3.0',
   showSettings: true,
   tagsView: true,
   fixedHeader: false,

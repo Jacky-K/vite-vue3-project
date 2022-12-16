@@ -1,6 +1,7 @@
 import router from '@/router'
 import { ElMessage } from 'element-plus'
 import { Page404 } from '@/router'
+import getPageTitle from '@/utils/get-page-title'
 import useStore from '@/store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -27,6 +28,7 @@ const whiteList = ['/login']
 
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
+  document.title = getPageTitle(to.name)
   const { user, permission } = useStore()
   const hasToken = user.token
   if (hasToken) {
