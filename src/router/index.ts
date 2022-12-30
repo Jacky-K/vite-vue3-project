@@ -16,10 +16,6 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 })
 })
 
-/**
- * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
- */
 export const Page404 = {
   path: '/:pathMatch(.*)*',
   name: '404',

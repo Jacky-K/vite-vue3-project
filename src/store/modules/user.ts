@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { login, getUserInfo, getUserMenu } from '@/api/user'
+import { login, getUserInfo } from '@/api/user'
 import { localStorage } from '@/utils/storage'
 import { UserState, LoginDataForm } from './types'
 import { JSEncrypt } from 'jsencrypt'
@@ -16,6 +16,7 @@ const useUserStore = defineStore({
     resetToken() {
       return new Promise((resolve) => {
         this.token = ''
+        this.role_type = ''
         localStorage.remove('token')
         resolve('')
       })

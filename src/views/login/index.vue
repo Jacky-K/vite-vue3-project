@@ -3,7 +3,9 @@
     <div class="login-wrapper">
       <div class="login-form">
         <div class="title-container">
-          <span class="logo" />
+          <svg-icon icon-class="vite" style="font-size: 26px" />
+          <span style="font-size: 18px"> vite + vue3.0 + ts</span>
+          <!-- <span class="logo" /> -->
         </div>
         <el-form
           ref="loginFormRef"
@@ -24,7 +26,7 @@
             <el-input
               ref="username"
               v-model.trim="loginForm.username"
-              placeholder="登录邮箱"
+              placeholder="用户名"
               name="username"
               type="text"
               tabindex="1"
@@ -168,9 +170,6 @@ function handleLogin() {
 </script>
 
 <style lang="scss">
-/* 修复input 背景不协调 和光标变色 */
-/* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
-
 $bg: #283443;
 $light_gray: #fff;
 $cursor: #303133;
@@ -235,7 +234,7 @@ $light_gray: #eee;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  // background-color: rgba(0, 0, 0, 0.75);
 }
 
 .login-container {
@@ -243,11 +242,9 @@ $light_gray: #eee;
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-image: url('../../assets/images/bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #2d3a4b;
   .logo {
-    background: url('../../assets/images/logo_2.svg') center no-repeat;
+    // background: url('../../assets/images/logo_2.svg') center no-repeat;
     background-size: 100%;
     width: 220px;
     height: 30px;

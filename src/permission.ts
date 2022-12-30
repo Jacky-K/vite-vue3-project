@@ -53,7 +53,7 @@ router.beforeEach(async (to, from, next) => {
 
           if (!pathList.includes(to.path)) {
             next({
-              ...to,
+              // ...to,
               path: pathList[0],
               replace: true
             })
