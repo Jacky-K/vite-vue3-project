@@ -2,7 +2,9 @@
   <section class="app-main">
     <router-view v-slot="{ Component, route }">
       <transition name="router-fade" mode="out-in">
-        <component :is="Component" :key="route.fullPath" />
+        <div>
+          <component :is="Component" :key="route.fullPath" />
+        </div>
       </transition>
     </router-view>
   </section>
@@ -20,6 +22,7 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
+  padding: 14px;
 }
 .fixed-header + .app-main {
   padding-top: 50px;

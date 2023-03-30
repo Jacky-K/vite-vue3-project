@@ -5,6 +5,9 @@
       <navbar />
       <app-main />
     </div>
+    <RightPanel>
+      <settings />
+    </RightPanel>
   </div>
 </template>
 
@@ -12,6 +15,7 @@
 import AppMain from './components/AppMain.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import Navbar from './components/Navbar.vue'
+import Settings from './components/Settings/index.vue'
 
 import useStore from '@/store'
 

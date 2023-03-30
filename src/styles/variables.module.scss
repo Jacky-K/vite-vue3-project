@@ -1,12 +1,12 @@
 // sidebar
-$menuText:rgba(255,255,255,0.7);
+$menuText:var(--el-text-color-primary);
 $menuActiveText:#fff;
-$subMenuActiveText:#fff;
+$subMenuActiveText: var(--el-text-color-primary);
 
-$menuBg:#21294e;
+$menuBg:var(--el-bg-color);
 $menuHover:rgba(255,255,255,0.15);
 
-$subMenuBg:#19244E;
+$subMenuBg: var(--el-bg-color);
 $subMenuHover:rgba(255,255,255,0.15);
 
 $sideBarWidth: 210px;

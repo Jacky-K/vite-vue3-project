@@ -1,9 +1,9 @@
 <template>
-  <div>dashboard</div>
+  <div>
+    <el-input placeholder="请输入" />
+  </div>
+
+  <el-button type="primary">ceshi</el-button>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'DashboardPivot'
-}
-</script>
+<script lang="ts" setup></script>

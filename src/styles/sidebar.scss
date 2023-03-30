@@ -6,7 +6,7 @@
     position: relative;
     overflow: hidden;
     min-width: 1200px;
-    background: #F5F7FA;
+    background: var(--el-bg-color);
     padding-bottom:20px;
     height: 100%;
     display: flex;
@@ -16,7 +16,7 @@
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;
-    background-color: $menuBg;
+    background-color: var(--el-bg-color);
     height: 100%;
     position: fixed;
     font-size: 0px;
@@ -28,6 +28,7 @@
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
+    box-shadow: 2px 0 16px 0 rgba(34, 101, 255, 0.2);
     // reset element-ui css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
@@ -96,11 +97,10 @@
       padding-right: 18px !important;
       display: flex;
       align-items: center;
-      // height: 36px !important;
-      // line-height: 36px !important;
       &:hover {
         .el-submenu-content {
-          background-color: $menuHover !important;
+          background-color: var(--el-color-primary) !important;
+          color: #fff;
         }
         // background-color: $subMenuHover !important;
       }
@@ -238,7 +238,7 @@
 .el-submenu-content {
   height: 36px;
   background: none;
-  border-radius: 4px;
+  border-radius: 8px;
   line-height: 36px;
   width: 180px;
   margin-left: -10px;
@@ -249,14 +249,14 @@
 }
 .el-menu-item.is-active {
   .el-submenu-content {
-    background: #3392ff;
+    background: var(--el-color-primary);
   }
 }
 .el-sub-menu.is-active {
   .hidesidebar-active {
     width: 36px;
     height: 36px;
-    background: #3392ff;
+    background: var(--el-color-primary);
     border-radius: 4px;
     position: relative;
     margin-left: 12px;
