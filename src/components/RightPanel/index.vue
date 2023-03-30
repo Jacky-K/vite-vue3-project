@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-import { addClass, removeClass } from '@/utils/index'
+import { addClass, removeClass } from '@/utils'
 
 import useStore from '@/store'
 
@@ -34,9 +34,9 @@ import useStore from '@/store'
 import { Close, Setting } from '@element-plus/icons-vue'
 import { ElColorPicker } from 'element-plus'
 
-// const { setting } = useStore()
-const el = document.documentElement
-const theme = ref(getComputedStyle(el).getPropertyValue(`--el-color-primary`))
+const { setting } = useStore()
+
+const theme = computed(() => setting.theme)
 const show = ref(false)
 
 defineProps({
@@ -79,8 +79,8 @@ function closeSidebar(evt: any) {
 const rightPanel = ref(ElColorPicker)
 
 function insertToBody() {
-  const elx = rightPanel.value as any
-  const body = document.querySelector('body') as any
+  const elx = rightPanel.value
+  const body = document.querySelector('body')
   body.insertBefore(elx, body.firstChild)
 }
 
@@ -89,7 +89,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  const elx = rightPanel.value as any
+  const elx = rightPanel.value
   elx.remove()
 })
 </script>

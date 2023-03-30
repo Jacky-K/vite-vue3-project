@@ -18,33 +18,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { mix } from '@/utils'
+import { localStorage } from '@/utils/storage'
+import useStore from '@/store'
 
 const node = document.documentElement
-const setting = getComputedStyle(node).getPropertyValue(`--el-color-primary`)
-
-const theme = ref(setting)
+const { setting } = useStore()
+const theme = computed(() => setting.theme)
 
 // 白色混合色
 const mixWhite = '#ffffff'
 // 黑色混合色
 const mixBlack = '#000000'
 
-watch(theme, (color: string) => {
-  node.style.setProperty('--el-color-primary', color)
-  // localStorage.set('theme', color)
+watch(
+  theme,
+  (color: string) => {
+    node.style.setProperty('--el-color-primary', color)
+    localStorage.set('theme', color)
 
-  for (let i = 1; i < 10; i += 1) {
+    for (let i = 1; i < 10; i += 1) {
+      node.style.setProperty(
+        `--el-color-primary-light-${i}`,
+        mix(color, mixWhite, i * 0.1)
+      )
+    }
     node.style.setProperty(
-      `--el-color-primary-light-${i}`,
-      mix(color, mixWhite, i * 0.1)
+      '--el-color-primary-dark-2',
+      mix(color, mixBlack, 0.1)
     )
-  }
-  node.style.setProperty('--el-color-primary-dark-2', mix(color, mixBlack, 0.1))
-
-  // localStorage.set('style', node.style.cssText)
-})
+  },
+  { immediate: true }
+)
 </script>
 
 <style>

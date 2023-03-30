@@ -21,3 +21,8 @@ export interface AppState {
     opened: boolean
   }
 }
+
+export interface SettingState {
+  theme: string
+  showSettings: boolean
+}

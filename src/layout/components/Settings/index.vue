@@ -26,12 +26,12 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, toRefs, watch } from 'vue'
-
 import useStore from '@/store'
-// function themeChange(val: any) {
-//   setting.changeSetting({ key: 'theme', value: val })
-// }
+
+const { setting } = useStore()
+const themeChange = (val) => {
+  setting.changeSetting({ key: 'theme', value: val })
+}
 </script>
 
 <style lang="scss" scoped>
