@@ -1,5 +1,10 @@
 <template>
-  <div ref="rightPanel" :class="{ show: show }" class="rightPanel-container">
+  <div
+    v-if="showSettings"
+    ref="rightPanel"
+    :class="{ show: show }"
+    class="rightPanel-container"
+  >
     <div class="rightPanel-background" />
     <div class="rightPanel">
       <div
@@ -37,6 +42,7 @@ import { ElColorPicker } from 'element-plus'
 const { setting } = useStore()
 
 const theme = computed(() => setting.theme)
+const showSettings = computed(() => setting.showSettings)
 const show = ref(false)
 
 defineProps({

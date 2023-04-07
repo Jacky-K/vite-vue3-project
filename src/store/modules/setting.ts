@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia'
 import { SettingState } from './types'
 import { localStorage } from '@/utils/storage'
+import defaultSettings from '../../settings'
+
+const { showSettings } = defaultSettings
 const el = document.documentElement
 
 export default defineStore({
@@ -9,7 +12,7 @@ export default defineStore({
     theme:
       localStorage.get('theme') ||
       getComputedStyle(el).getPropertyValue(`--el-color-primary`),
-    showSettings: false
+    showSettings: showSettings
   }),
   actions: {
     async changeSetting(payload: { key: string; value: any }) {
