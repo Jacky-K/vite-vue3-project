@@ -2,6 +2,7 @@ import { UserConfig, ConfigEnv, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import vueJSX from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
@@ -16,17 +17,12 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         iconDirs: [path.resolve(process.cwd(), 'src/icons')],
         // 指定symbolId格式
         symbolId: 'icon-[name]'
-      })
+      }),
+      vueJSX()
     ],
     server: {
       open: true,
-      port: 8080,
-      proxy: {
-        '/api': {
-          target: env.VITE_APP_BASE_API,
-          changeOrigin: true
-        }
-      }
+      port: 8080
     },
     resolve: {
       alias: {
