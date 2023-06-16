@@ -5,7 +5,7 @@
       <el-button type="primary">ceshi</el-button>
     </div>
     <div class="page-main">
-      <BaseTable
+      <!-- <BaseTable
         :data="tableData"
         :column="column"
         :total="tableData.length"
@@ -18,12 +18,15 @@
           <el-button type="primary" size="small">编辑</el-button>
           <el-button type="danger" size="small">删除</el-button>
         </template>
-      </BaseTable>
+      </BaseTable> -->
     </div>
+    <InputModel v-model="obj" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { reactive, ref } from 'vue'
+import InputModel from './InputModel.vue'
 const tableData = []
 for (let index = 0; index < 100; index++) {
   tableData.push({
@@ -175,6 +178,12 @@ const column = [
     slot: true
   }
 ]
+
+const obj = ref({
+  name: '123'
+})
+
+console.log(obj)
 </script>
 
 <style lang="scss" scoped>
