@@ -5,7 +5,7 @@
       <el-button type="primary">ceshi</el-button>
     </div>
     <div class="page-main">
-      <!-- <BaseTable
+      <BaseTable
         :data="tableData"
         :column="column"
         :total="tableData.length"
@@ -18,16 +18,25 @@
           <el-button type="primary" size="small">编辑</el-button>
           <el-button type="danger" size="small">删除</el-button>
         </template>
-      </BaseTable> -->
+      </BaseTable>
     </div>
     <InputModel v-model="obj" />
+    {{ count }}
+    <el-button @click="handleAdd">点击</el-button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import InputModel from './InputModel.vue'
-const tableData = []
+import useHooks from '../hook'
+
+const { count } = useHooks()
+
+const handleAdd = () => {
+  count.value++
+}
+const tableData: any = []
 for (let index = 0; index < 100; index++) {
   tableData.push({
     date: '2016-05-03',
@@ -35,128 +44,7 @@ for (let index = 0; index < 100; index++) {
     address: 'No. 189, Grove St, Los Angeles'
   })
 }
-// const tableData = [
-//   {
-//     date: '2016-05-03',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-02',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-04',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-01',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-03',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-02',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-04',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-01',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-03',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-02',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-04',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-01',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-03',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-02',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-04',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-01',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-03',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-02',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-04',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-01',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-03',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-02',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-04',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-01',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   }
-// ]
+
 const column = [
   {
     prop: 'date',
@@ -190,8 +78,10 @@ console.log(obj)
 .page-container {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .page-main {
   flex: 1;
+  overflow: hidden;
 }
 </style>

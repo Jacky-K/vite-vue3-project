@@ -1,10 +1,5 @@
 <template>
-  <el-table
-    ref="tableRef"
-    :data="data"
-    :column="column"
-    :max-height="`calc(100% - 38px)`"
-  >
+  <el-table ref="tableRef" :data="data" :column="column">
     <el-table-column
       v-for="item in column"
       :key="item.prop"
@@ -26,8 +21,8 @@
   <Pagination v-if="pagination" :total="total" v-bind="$attrs" />
 </template>
 
-<script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+<script setup>
+import { ref } from 'vue'
 
 defineProps({
   data: {
@@ -41,14 +36,11 @@ defineProps({
   pagination: {
     type: Boolean,
     default: true
+  },
+  total: {
+    type: [String, Number],
+    default: 0
   }
 })
 const tableRef = ref(null)
-const maxHeight = ref()
-
-onMounted(() => {
-  console.log(tableRef.value.$el.offsetTop)
-  maxHeight.value = window.innerHeight - tableRef.value.$el.offsetTop - 150
-  console.log(maxHeight.value, 'maxHeight')
-})
 </script>
