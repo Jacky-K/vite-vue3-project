@@ -7,9 +7,12 @@
       :label="item.label"
       v-bind="{ ...item }"
     >
+      <template v-if="item.header" #header>
+        <slot name="header" :prop="item.prop" />
+      </template>
       <template #default="scope">
         <template v-if="item.slot">
-          <slot :name="item.prop" :scope="scope" />
+          <slot :prop="item.prop" :scope="scope" />
         </template>
         <template v-else>{{ scope.row[item.prop] }}</template>
       </template>

@@ -11,12 +11,17 @@
         :total="tableData.length"
         pagination
       >
-        <template #date="{ scope }">
-          自定义插槽--- {{ scope.row.date }}
+        <template #header="{ prop }">
+          <template v-if="prop === 'date'"> 日期+1 </template>
         </template>
-        <template #operation>
-          <el-button type="primary" size="small">编辑</el-button>
-          <el-button type="danger" size="small">删除</el-button>
+        <template #default="{ scope, prop }">
+          <template v-if="prop === 'date'">
+            自定义插槽--- {{ scope.row.date }}
+          </template>
+          <template v-if="prop === 'operation'">
+            <el-button type="primary" size="small">编辑</el-button>
+            <el-button type="danger" size="small">删除</el-button>
+          </template>
         </template>
       </BaseTable>
     </div>
@@ -50,7 +55,8 @@ const column = [
     prop: 'date',
     label: '日期',
     slot: true,
-    fixed: true
+    fixed: true,
+    header: true
   },
   {
     prop: 'name',
