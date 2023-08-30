@@ -1,20 +1,24 @@
 <template>
-  <el-table ref="tableRef" :data="data" :column="column">
+  <el-table ref="tableRef" :data="data">
     <el-table-column
-      v-for="item in column"
+      v-for="item in columns"
       :key="item.prop"
       :prop="item.prop"
       :label="item.label"
       v-bind="{ ...item }"
     >
-      <template v-if="item.header" #header>
-        <slot name="header" :prop="item.prop" />
+      <template #header="{ column }">
+        <slot
+          v-if="item.headerSlot"
+          :name="`${item.prop}Header`"
+          :column="column"
+        />
+        <span v-else>{{ column.label }}</span>
       </template>
+
       <template #default="scope">
-        <template v-if="item.slot">
-          <slot :prop="item.prop" :scope="scope" />
-        </template>
-        <template v-else>{{ scope.row[item.prop] }}</template>
+        <slot v-if="item.slot" :name="item.prop" v-bind="scope" />
+        <span v-else>{{ scope.row[item.prop] }}</span>
       </template>
     </el-table-column>
     <template #empty>
@@ -32,7 +36,7 @@ defineProps({
     type: Array,
     default: () => []
   },
-  column: {
+  columns: {
     type: Array,
     default: () => []
   },

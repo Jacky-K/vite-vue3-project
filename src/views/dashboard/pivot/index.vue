@@ -7,21 +7,20 @@
     <div class="page-main">
       <BaseTable
         :data="tableData"
-        :column="column"
+        :columns="columns"
         :total="tableData.length"
         pagination
       >
-        <template #header="{ prop }">
-          <template v-if="prop === 'date'"> 日期+1 </template>
+        <template #dateHeader="{ column }">
+          <template v-if="column.property === 'date'">
+            日期(自定义插槽--表头)
+          </template>
         </template>
-        <template #default="{ scope, prop }">
-          <template v-if="prop === 'date'">
-            自定义插槽--- {{ scope.row.date }}
-          </template>
-          <template v-if="prop === 'operation'">
-            <el-button type="primary" size="small">编辑</el-button>
-            <el-button type="danger" size="small">删除</el-button>
-          </template>
+
+        <template #date="{ row }"> 自定义插槽--- {{ row.date }} </template>
+        <template #operation>
+          <el-button type="primary" size="small">编辑</el-button>
+          <el-button type="danger" size="small">删除</el-button>
         </template>
       </BaseTable>
     </div>
@@ -50,13 +49,13 @@ for (let index = 0; index < 100; index++) {
   })
 }
 
-const column = [
+const columns = [
   {
     prop: 'date',
     label: '日期',
-    slot: true,
     fixed: true,
-    header: true
+    headerSlot: true,
+    slot: true
   },
   {
     prop: 'name',
