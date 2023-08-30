@@ -1,31 +1,33 @@
 <template>
-  <el-table ref="tableRef" :data="data">
-    <el-table-column
-      v-for="item in columns"
-      :key="item.prop"
-      :prop="item.prop"
-      :label="item.label"
-      v-bind="{ ...item }"
-    >
-      <template #header="{ column }">
-        <slot
-          v-if="item.headerSlot"
-          :name="`${item.prop}Header`"
-          :column="column"
-        />
-        <span v-else>{{ column.label }}</span>
-      </template>
+  <div class="table-container">
+    <el-table ref="tableRef" :data="data">
+      <el-table-column
+        v-for="item in columns"
+        :key="item.prop"
+        :prop="item.prop"
+        :label="item.label"
+        v-bind="{ ...item }"
+      >
+        <template #header="{ column }">
+          <slot
+            v-if="item.headerSlot"
+            :name="`${item.prop}Header`"
+            :column="column"
+          />
+          <span v-else>{{ column.label }}</span>
+        </template>
 
-      <template #default="scope">
-        <slot v-if="item.slot" :name="item.prop" v-bind="scope" />
-        <span v-else>{{ scope.row[item.prop] }}</span>
+        <template #default="scope">
+          <slot v-if="item.slot" :name="item.prop" v-bind="scope" />
+          <span v-else>{{ scope.row[item.prop] }}</span>
+        </template>
+      </el-table-column>
+      <template #empty>
+        <el-empty :image-size="200" />
       </template>
-    </el-table-column>
-    <template #empty>
-      <el-empty :image-size="200" />
-    </template>
-  </el-table>
-  <Pagination v-if="pagination" :total="total" v-bind="$attrs" />
+    </el-table>
+    <Pagination v-if="pagination" :total="total" v-bind="$attrs" />
+  </div>
 </template>
 
 <script setup>
@@ -51,3 +53,14 @@ defineProps({
 })
 const tableRef = ref(null)
 </script>
+
+<style lang="scss" scoped>
+.table-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .el-table {
+    flex: 1;
+  }
+}
+</style>

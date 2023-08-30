@@ -24,9 +24,7 @@
         </template>
       </BaseTable>
     </div>
-    <InputModel v-model="obj" />
-    {{ count }}
-    <el-button @click="handleAdd">点击</el-button>
+    <!-- <InputModel v-model="obj" /> -->
   </div>
 </template>
 
