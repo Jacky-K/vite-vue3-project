@@ -27,6 +27,21 @@ service.interceptors.request.use(
     if (user.token) {
       config.headers['bds2-token'] = localStorage.get('token')
     }
+
+    let callback: any = null
+    if (config.params?.cancelCallback) {
+      callback = config.params.cancelCallback
+      config.params && delete config.params.cancelCallback
+    }
+
+    if (config.data?.cancelCallback) {
+      callback = config.data.cancelCallback
+      config.data && delete config.data.cancelCallback
+    }
+
+    config.cancelToken = new axios.CancelToken((cancel) => {
+      if (callback) callback(cancel)
+    })
     return config
   },
   (err: any) => {
@@ -66,6 +81,10 @@ service.interceptors.response.use(
     }
   },
   (error: any) => {
+    if (axios.isCancel(error)) {
+      console.log('被取消的重复请求：' + error.message)
+      return Promise.reject(error)
+    }
     ElMessage({
       message: error.message || 'Error',
       type: 'error'

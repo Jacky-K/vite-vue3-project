@@ -8,10 +8,11 @@ export function login(data: object) {
   })
 }
 
-export function getUserInfo() {
+export function getUserInfo(params: any) {
   return request({
     url: '/api/sys-user/getUser',
-    method: 'get'
+    method: 'get',
+    params
   })
 }
 

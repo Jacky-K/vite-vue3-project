@@ -2,6 +2,8 @@
   <div class="page-container">
     <el-input placeholder="请输入" />
     <div>
+      <el-button @click="startRequest">开始请求</el-button>
+      <el-button @click="cancelRequest">取消请求</el-button>
       <el-button type="primary">ceshi</el-button>
     </div>
     <div class="page-main">
@@ -24,21 +26,23 @@
         </template>
       </BaseTable>
     </div>
+
     <!-- <InputModel v-model="obj" /> -->
   </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive, ref } from 'vue'
+<script setup>
+import { onMounted, reactive, ref } from 'vue'
 import InputModel from './InputModel.vue'
 import useHooks from '../hook'
+import { getUserInfo } from '@/api/user'
 
 const { count } = useHooks()
 
 const handleAdd = () => {
   count.value++
 }
-const tableData: any = []
+const tableData = []
 for (let index = 0; index < 100; index++) {
   tableData.push({
     date: '2016-05-03',
@@ -70,11 +74,22 @@ const columns = [
   }
 ]
 
-const obj = ref({
-  name: '123'
-})
+const cancelTest = ref(null)
 
-console.log(obj)
+const startRequest = () => {
+  const params = {
+    cancelCallback: cancelRequestCb
+  }
+  getUserInfo(params)
+}
+
+const cancelRequestCb = (cancel) => {
+  cancelTest.value = cancel
+}
+
+const cancelRequest = () => {
+  cancelTest.value()
+}
 </script>
 
 <style lang="scss" scoped>
