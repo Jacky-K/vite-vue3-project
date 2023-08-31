@@ -76,6 +76,10 @@ const columns = [
 
 const cancelTest = ref(null)
 
+/**
+ * @description: 取消请求demo
+ * @return {*}
+ */
 const startRequest = () => {
   const params = {
     cancelCallback: cancelRequestCb
