@@ -4,9 +4,11 @@
     <div>
       <el-button @click="startRequest">开始请求</el-button>
       <el-button @click="cancelRequest">取消请求</el-button>
-      <el-button type="primary">ceshi</el-button>
     </div>
-    <div class="page-main">
+    <div
+      v-cancelRequest="{ loading, callback: cancelRequest }"
+      class="page-main"
+    >
       <BaseTable
         :data="tableData"
         :columns="columns"
@@ -74,7 +76,12 @@ const columns = [
   }
 ]
 
+const loading = ref(true)
 const cancelTest = ref(null)
+
+onMounted(() => {
+  startRequest()
+})
 
 /**
  * @description: 取消请求demo
@@ -84,6 +91,7 @@ const startRequest = () => {
   const params = {
     cancelCallback: cancelRequestCb
   }
+  loading.value = true
   getUserInfo(params)
 }
 
@@ -92,7 +100,8 @@ const cancelRequestCb = (cancel) => {
 }
 
 const cancelRequest = () => {
-  cancelTest.value()
+  cancelTest.value && cancelTest.value()
+  loading.value = false
 }
 </script>
 

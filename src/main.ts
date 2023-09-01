@@ -17,7 +17,13 @@ import components from './components'
 // 引入svg注册脚本
 import 'virtual:svg-icons-register'
 
+import * as directive from './directive'
 const app = createApp(App)
+
+// 注册全局自定义指令
+Object.keys(directive).forEach((item) => {
+  app.directive(item, directive[item])
+})
 
 app
   .use(components)
